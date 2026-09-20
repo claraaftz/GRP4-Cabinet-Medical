@@ -75,6 +75,29 @@ class Consultation:
             raise InvalidConsultationStatusError("Impossible d'annuler une consultation déjà réalisée.")
         self._statut = "annulée"
  
+    @staticmethod
+    def _prescription_to_dict(prescription) -> dict:
+        details = {
+            "type": type(prescription).__name__,
+            "traitement": getattr(prescription, "_traitement", ""),
+            "posologie": getattr(prescription, "_posologie", ""),
+            "duree_traitement": getattr(prescription, "_duree_traitement", ""),
+        }
+
+        for attribut in (
+            "_medicament",
+            "_dosage",
+            "_frequence",
+            "_type_examen",
+            "_laboratoire_recommande",
+            "_zone_traite",
+            "_nb_seance",
+        ):
+            if hasattr(prescription, attribut):
+                details[attribut[1:]] = getattr(prescription, attribut)
+
+        return details
+
     def to_dict(self) -> dict:
         return {
             "date_heure": self.date_heure.isoformat(),
@@ -83,5 +106,5 @@ class Consultation:
             "motif": self.motif,
             "diagnostic": self.diagnostic,
             "statut": self.statut,
-            "prescriptions": [p.to_dict() for p in self.prescriptions]
+            "prescriptions": [self._prescription_to_dict(p) for p in self.prescriptions]
         }
