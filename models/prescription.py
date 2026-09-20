@@ -20,8 +20,8 @@ class PrescriptionMedicamenteuse(Prescription) :
         self._dosage = dosage
         self._frequence = frequence
 
-    def afficher_details(self):
-        
+    @property
+    def afficher_details(self) -> str:
         return (
             "Prescription medicamenteuse :\n"
             f"- Medicament : {self._medicament}\n"
@@ -31,14 +31,15 @@ class PrescriptionMedicamenteuse(Prescription) :
             f"- Durée du traitement : {self._duree_traitement}\n"
             )
     
-class PrescriptionExamen(Prescription) :
+class PrescriptionExamen(Prescription):
 
     def __init__(self, type_examen: str, laboratoire_recommande: str, *, posologie: str ="Aucune", duree_traitement: str ="Aucune", ) -> None:
         super().__init__(type_examen, posologie, duree_traitement)
         self._type_examen = type_examen
         self._laboratoire_recommande = laboratoire_recommande
 
-    def afficher_details(self):
+    @property
+    def afficher_details(self) -> str:
         return (
             "Prescription d'examen :\n"
             f"- Type d'examen : {self._type_examen}\n"
@@ -54,8 +55,8 @@ class PrescriptionKinesitherapie(Prescription) :
         self._zone_traite = zone_traite
         self._nb_seance = nb_seance
 
-    def afficher_details(self):
-
+    @property   
+    def afficher_details(self) -> str:
         return (
             "Prescription Kinesitherapie \n"
             f"- Zone à traité : {self._zone_traite} \n"
