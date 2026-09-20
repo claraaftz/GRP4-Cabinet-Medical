@@ -1,0 +1,13 @@
+{
+    "patients": [
+        {
+            "n_securite_sociale": "190057512345678",
+            "nom": "Dupont",
+            "prenom": "Jean",
+            "date_naissance": "1990-05-15",
+            "adresse": "10 rue de Paris",
+            "telephone": "0601020304"
+        }
+    ],
+    "consultations": []
+}
