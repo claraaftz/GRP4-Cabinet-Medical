@@ -12,3 +12,5 @@ class InvalidSecurityNumberError(Exception):
 
 class InvalidConsultationStatusError(Exception):
     pass
+
+
