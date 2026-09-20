@@ -1,5 +1,12 @@
 from abc import ABC, abstractmethod
 
+
+__all__ = [
+    "PrescriptionMedicamenteuse",
+    "PrescriptionExamen",
+    "PrescriptionKinesitherapie"
+]
+
 class Prescription(ABC) :
 
     def __init__(self, traitement: str, posologie: str, duree_traitement: str ) -> None:

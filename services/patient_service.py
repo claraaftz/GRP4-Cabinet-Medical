@@ -1,4 +1,5 @@
 from models.patient import Patient
+from models.prescription import *
 from utils.decorators import log_action, validate_patient
 from utils.validators import PatientNotFoundError
  
